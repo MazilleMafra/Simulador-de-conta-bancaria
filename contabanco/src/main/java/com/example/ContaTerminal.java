@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ContaTerminal {
@@ -10,7 +11,7 @@ public class ContaTerminal {
         int numero;
         String agencia, primeiroNomeCliente, segundoNomeCliente;
         double saldo;
-
+        try{
         System.out.println("=========================================================");
         System.out.println("Olá! Seja muito bem vindo, vejo que você é novo por aqui.");
         System.out.println("=========================================================");
@@ -21,10 +22,11 @@ public class ContaTerminal {
         agencia = sc.nextLine();
         System.out.println("---------------------------------");
 
+        
         System.out.println("Ótimo, agora digite o número da sua agência:");
         numero = sc.nextInt();
         System.out.println("--------------------------------------------");
-
+        
         System.out.println("Estamos quase lá, me informe seu primeiro nome:");
         primeiroNomeCliente =sc.next();
         System.out.println("-----------------------------------------------");
@@ -40,6 +42,11 @@ public class ContaTerminal {
 
        System.out.printf("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é %s, conta %d e seu saldo %.2f já está disponível para saque.%n", nomeCliente, agencia, numero, saldo);
         sc.close();
+        }
+        
+        catch(InputMismatchException e){
+            System.out.println("erro na numeração da agencia");
+        }
     }
     public static String nomeCliente(String primeiroNomeCliente , String segundoNomeCliente){
         return primeiroNomeCliente.concat(" ").concat(segundoNomeCliente);
